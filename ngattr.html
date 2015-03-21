@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ng属性</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/foundation.css"/>
+    <style>
+        .top{
+            margin-top: 20px;
+        }
+        .odd{
+            background: forestgreen;
+            color: #ffffff;
+        }
+        .even{
+            background: lightskyblue;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body ng-app="ngattr">
+<div class="row top">
+    <div class="large-8 columns">
+        <input type="text" ng-model="ID" placeholder="ID"/>
+        <input type="email" ng-model="EMAIL" placeholder="Email"/>
+        <input type="password" ng-model="PASSWD" placeholder="Password"/>
+        <button ng-model="button" ng-disabled="(ID == null)||(EMAIL == null)||(PASSWD == null)">AButton</button>
+    </div>
+</div>
+
+<input type="text" ng-model="name"/>
+
+<div ng-switch on="name">
+    <h1 ng-switch-default>谁是最有基础的人？</h1>
+    <h1 ng-switch-when="文继飞">答对了！</h1>
+</div>
+
+<ul ng-controller="PeopleController">
+    <li ng-repeat="person in people" ng-class="{even: $even, odd: $odd}">
+         {{person.name}} lives in {{person.city}}
+    </li>
+</ul>
+
+
+
+</body>
+</html>

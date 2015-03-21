@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="custom">
+<head lang="en">
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/foundation.css"/>
+    <meta charset="UTF-8">
+    <title>Custom</title>
+</head>
+<body>
+在HTML文件中写作my-directive,在JS文件中必须使用驼峰命名法<br />
+    <my-directive></my-directive> Element<br/>
+    <div my-directive></div> Attribute<br/>
+    <div class="my-directive"></div> Class
+
+    <h4 ng-init="greeting='Hello, world'">
+        The greeting is {{greeting}}
+    </h4>
+    <div lnk
+         url = "http://www.chensihang.com"
+         text = "Personal Page">
+    </div>
+</body>
+</html>

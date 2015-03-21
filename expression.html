@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Expressions</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="app1">
+    <div ng-controller="ExController">
+        <input type="text" placeholder="Enter an expression" ng-model="expr"/>
+        <h2>{{parseValue}}</h2>
+        <h3>给expr添加一个$watch并且解析它</h3>
+    </div>
+    <div ng-controller="NameController">
+        <h2>{{name}}</h2>
+    </div>
+    <div ng-controller="TimeController">
+        <h3>{{date | date:"short"}}</h3>
+        <h3>{{date | date:"yyyy-M-dd"}}</h3>
+        <h3>{{['Ari', 'Lerner', 'Likes', 'To', 'Eat'] | filter : 'e'}}</h3>
+        <h3>{{{'name':"Sean Chain", 'city':"Chengdu"} | json}}</h3> <!--将一个JS或者JSON对象转化为字符串-->
+    </div>
+    <h3>{{'ginger loves dog treats' | capitalize}}</h3>
+
+</body>
+</html>

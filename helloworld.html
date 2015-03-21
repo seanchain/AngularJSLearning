@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Simple App</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+<h3>AngularJS通过创建试试模板来代替视图，而不是将数据合并进模板之后更新DOM，实现功能，只需要引入AngularJS文件，并且在某个DOM设置ng-app
+元素即可</h3>
+    <div ng-controller="MyController">
+        <h1>Hello, {{name}}</h1>
+    </div>
+    <div ng-controller="TimeController">
+        <h4>{{clock.now}}</h4>
+    </div>
+    <h3><input type="text" ng-model="name" placeholder="Your name"/></h3>
+
+    <h2>Hello {{name}}</h2>
+
+    <h3><input type="text" ng-model="movie" placeholder="Your name"/></h3>
+
+    <h2>Hello {{movie}}</h2>
+
+    <div ng-controller="FirstController">
+        <h4>The simplest adding machine ever</h4>
+        <button ng-click="add(3)" class="button">Add</button>
+        <a ng-click="subtract(2)" class="button alert">Subtract</a>
+        <h4>Current count: {{counter}}</h4>
+    </div>
+    <div ng-controller="PersonController">
+        <h3>{{person.name | uppercase}} 打印出对象person的name属性</h3>
+        <h3>{{person}} 打印出对象person</h3> <!--键值对的形式显示-->
+    </div>
+
+    <div>
+        <div ng-controller="ParentController">
+            <div ng-controller="ChildController">
+                <h3>可以在子作用域中访问父作用域的$scope对象</h3>
+                <a ng-click="sayHello()">Say Hello</a>
+            </div>
+            {{person}}
+        </div>
+    </div>
+    Controller应该保持短小精悍，而不应该在controller中进行DOM操作和数据操作
+
+</body>
+</html>
