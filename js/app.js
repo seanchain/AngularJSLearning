@@ -11,6 +11,7 @@ var app1 = angular.module("app1", []);
 var mail = angular.module("mail", []);
 var custom = angular.module("custom", []);
 var ngattr = angular.module("ngattr", []);
+var dir = angular.module("dir", []);
 
 
 app.controller('MyController', function($scope){
@@ -82,13 +83,7 @@ app1.filter('capitalize', function(){
     }
 });
 
-custom.directive('myDirective', function(){
-   return {
-       restrict: 'EAC', //调用时候E代码表元素，A代表属性，C代表类
-       replace: true,
-       template: '<a href="http://chensihang.com">Click to My Personal Site</a>'
-   };
-});
+
 
 custom.directive('lnk', function(){
    return {
@@ -101,6 +96,10 @@ custom.directive('lnk', function(){
        template: '<a href="{{url}}">{{text}}</a>'
    }
 });
+
+
+
+
 
 ngattr.controller('PeopleController', function($scope){
    $scope.people = [
@@ -140,4 +139,47 @@ ngattr.controller('LotteryController', function($scope){
    $scope.generateNumber = function(){
        return Math.floor(Math.random()*10 + 1);
    };
+});
+
+
+custom.directive('myDirective', function(){
+    return {
+        restrict: 'EAC', //调用时候E代码表元素，A代表属性，C代表类
+        replace: true,
+        template: '<a href="http://chensihang.com">Click to My Personal Site</a>'
+    };
+});
+
+
+
+dir.directive('myDirective', function(){
+    return {
+        restrict: 'EAC', //restrict是一个可选的参数，提供这个指令在DOM中以何种形式来进行声明，默认为A
+        //restrict可选值有EACM,分别为元素，属性，类名和注释
+        template:'<div>' +
+        '<a href="http://www.chensihang.com">Click Me!!!{{myUrl}}</a>' +
+        '</div>',//可以使用字符串或者函数，必须设置为一段HTML文本或者一个可以接受两个参数的函数，并能够返回一个代表模板的字符串
+        replace:true, //替换tag为模板内容
+        //scope的值默认为false，可选值有true,false和{}，其中true表示会从父作用域集成一个新的作用域对象，而为空则指令的
+        //模板就无法访问指令外部的作用域了，但是scope可以进行绑定策略的执行
+        //本地作用域属性:@符号将本地作用域的值同DOM属性进行绑定
+        //双向绑定：=符号将本地作用域的属性同父级作用域上的属性进行双向的数据绑定
+        //父级作用域绑定：&符号可以对于父级作用域进行绑定，以便在其中运行函数
+        scope: {
+            myUrl: '@'
+        }
+    };
+});
+
+dir.directive('sidebox', function() {
+   return {
+       restrict: 'EA',
+       scope:{
+           title : '@'
+       },
+       transclude:true, //transclude默认为false，设置为true之后可以创建可复用的组件，也就是在你的directive标签里面添加其他内容，
+       template:'<div class="sidebox"><div class="panel"><h2 class="subheader">{{title}}</h2><span class="content" ' +
+       'ng-transclude>' +
+       '</span></div></div>'
+   }
 });
