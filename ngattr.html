@@ -18,6 +18,9 @@
             background: lightskyblue;
             color: #ffffff;
         }
+        .red{
+            background: orangered;
+        }
     </style>
 </head>
 <body ng-app="ngattr">
@@ -43,7 +46,47 @@
     </li>
 </ul>
 
+<div ng-controller="EquationController">
+    <input type="text" ng-model="equation.x" ng-change="change()"/>
+    <code>{{equation.output}}</code>
+</div>
+<!--使用ng-change调用controller中的函数来进行数据的监听功能-->
 
+<form name="signup_form" ng-controller="FormController" ng-submit="SubmitForm()" novalidate>
+    <div ng-repeat="field in fields" ng-form="signup_form_input">
+        <input type="text" name="dynamic_input" ng-required="field.isRequired" ng-model="field.name"
+               placeholder="{{field.placeholder}}"/>
+        <div ng-show="signup_form_input.dynamic_input && signup_form_input.dynamic_input.$invalid">
+            <span class="error" ng-show="signup_form_input.dynamic_input.$error.required">
+                This field is required.
+            </span>
+        </div>
+    </div>
+    <button type="submit" ng-disabled="signup_from.$invalid">
+        Submit All
+    </button>
+</form>
+
+<div ng-controller="CityController">
+    <select ng-model="city"
+            ng-options="city.name for city in cities">
+        <option value="">Choose City</option>
+    </select>
+    Best City: {{city.name}}
+</div>
+
+<div ng-controller="LotteryController">
+    <div ng-class="{red: x > 5}" ng-if="x > 5">
+        You won!
+    </div>
+    <button ng-click="x = generateNumber()" ng-init="x = 0">
+        Draw Number
+    </button>
+    <p>Number is : {{x}}</p>
+</div>
+
+
+</div>
 
 </body>
 </html>

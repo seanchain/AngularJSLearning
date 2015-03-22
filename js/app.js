@@ -108,3 +108,36 @@ ngattr.controller('PeopleController', function($scope){
        {name: "Erik", city: "Seattle"}
    ];
 });
+ngattr.controller('EquationController', function ($scope) {
+    $scope.equation = {};
+    $scope.change = function(){
+        $scope.equation.output = parseInt($scope.equation.x) + 2;
+    };
+});
+
+ngattr.controller('FormController', function($scope){
+    $scope.fields = [
+        {placeholder:'username', isRequired:true},
+        {placeholder:'password', isRequired:true},
+        {placeholder:'email', isRequired:false}
+    ];
+    $scope.submitForm = function(){
+        alert('It works');
+    };
+
+});
+
+ngattr.controller('CityController', function($scope){
+   $scope.cities = [
+       {name:'Seattle'},
+       {name:'San Francisco'},
+       {name:'Chicago'},
+       {name:'Boston'}
+   ];
+});
+
+ngattr.controller('LotteryController', function($scope){
+   $scope.generateNumber = function(){
+       return Math.floor(Math.random()*10 + 1);
+   };
+});
