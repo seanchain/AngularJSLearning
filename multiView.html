@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="en" ng-app="multiview">
     <meta charset="UTF-8">
     <title></title>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
     <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/foundation.css"/>
 </head>
 <body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <div class="panel">
+        <div ng-view></div>
+    </div>
+    <footer>
+        <h5>Footer</h5>
+    </footer>
 
 </body>
 </html>

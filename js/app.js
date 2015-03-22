@@ -8,11 +8,10 @@
 
 var app = angular.module("app", []);
 var app1 = angular.module("app1", []);
-var mail = angular.module("mail", []);
 var custom = angular.module("custom", []);
 var ngattr = angular.module("ngattr", []);
 var dir = angular.module("dir", []);
-
+var multiview = angular.module("multiview", ['ngRoute']);
 
 app.controller('MyController', function($scope){
     $scope.name = "Ari";
@@ -183,3 +182,8 @@ dir.directive('sidebox', function() {
        '</span></div></div>'
    }
 });
+
+multiview.module('multiview', [])
+.config(['$routeProvider', function($routeProvider) {
+
+    }]);
